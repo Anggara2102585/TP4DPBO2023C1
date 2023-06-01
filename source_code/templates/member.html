@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Bootstrap CSS -->
+  <link href="libs/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>School Club Manager</title>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold text-success" href="index.php">SCM</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.php">Clubs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="member.php">Members</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+
+    <!-- Table -->
+    <div class="card mt-4">
+      <div class="card-body">
+        <div class="row justify-content-between">
+          <h5 class="card-title col-auto">DATA_TABLE_TITLE</h5>
+          <a type="button" href="member.php?add" class="btn btn-primary col-auto me-3" name="create_member">Add</a>
+        </div>
+        <table class="table align-middle text-center">
+          <thead>
+            <!-- <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Club</th>
+              <th>Join Date</th>
+              <th>Actions</th>
+            </tr> -->
+            DATA_TABLE_HEADER
+          </thead>
+          <tbody>
+            <!-- <tr>
+              <td>1</td>
+              <td class="main-value">Name</td>
+              <td>email@mail.com</td>
+              <td>008008</td>
+              <td>Music Club</td>
+              <td>2023-05-27</td>
+              <td>
+                <a href="member.php?edit=1" class="btn btn-sm btn-primary edit-btn">Edit</a>
+                <a href="member.php?delete=1" class="btn btn-sm btn-danger delete-btn">Delete</a>
+              </td>
+            </tr> -->
+            DATA_TABLE_BODY
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="libs/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- jQuery -->
+  <script src="libs/jquery.min.js"></script>
+  <script>
+    // Make confirmation before delete
+    $('.delete-btn').click(function(e) {
+      e.preventDefault(); // Prevent the button to do it's default behavior (continue the href)
+      var row = $(this).closest('tr');
+      var mainValue = row.find('.main-value').text(); // Get the main-value of the row data
+      var confirmDelete = confirm('Are you sure you want to delete ' + mainValue + '?');
+
+      if (confirmDelete) {
+        // Redirect to the PHP file for deletion
+        window.location.href = $(this).attr('href');
+      }
+    });
+  </script>
+</body>
+
+</html>
